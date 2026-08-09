@@ -54,3 +54,25 @@ All notable changes to RC-001 will be documented in this file.
 - Allowed VLANs
 - Native VLAN
 - Forwarding VLANs
+
+## M6 – OSPF Dynamic Routing – 2026-08-09
+
+### Added
+- OSPF process 1 on HQ-R1, ACC-R1, and TAK-R1.
+- OSPF Area 0 backbone.
+- Explicit OSPF router IDs.
+- Dynamic advertisement of enterprise LAN and WAN networks.
+- Passive OSPF configuration on LAN-facing subinterfaces.
+- Dynamic inter-site route propagation.
+
+### Verified
+- HQ-to-branch OSPF neighbor adjacencies.
+- OSPF route learning across all three sites.
+- HQ-to-branch connectivity.
+- Branch-to-HQ connectivity.
+- Branch-to-branch connectivity through HQ.
+- End-to-end ICMP communication.
+- Accra-to-Takoradi forwarding path using traceroute.
+
+### Status
+M6 completed successfully.

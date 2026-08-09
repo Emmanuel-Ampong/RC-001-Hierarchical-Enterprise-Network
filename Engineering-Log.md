@@ -317,3 +317,43 @@ All four switches successfully passed verification.
 ## Next Objective
 
 Implement Router-on-a-Stick (Inter-VLAN Routing).
+
+
+## M6 – OSPF Dynamic Routing
+
+**Status:** Complete  
+**Date:** 09 August 2026
+
+### Objective
+Implement dynamic routing between Headquarters, Accra, and Takoradi using OSPF.
+
+### Implementation
+- Configured OSPF process 1 on HQ-R1, ACC-R1, and TAK-R1.
+- Deployed all routed networks in OSPF Area 0.
+- Assigned deterministic router IDs:
+  - HQ-R1: 1.1.1.1
+  - ACC-R1: 2.2.2.2
+  - TAK-R1: 3.3.3.3
+- Advertised local VLAN networks and WAN point-to-point networks.
+- Configured LAN-facing subinterfaces as passive OSPF interfaces.
+- Established OSPF adjacencies across both WAN links.
+
+### Verification
+- HQ-R1 successfully formed FULL OSPF adjacencies with ACC-R1 and TAK-R1.
+- ACC-R1 successfully learned HQ and Takoradi networks dynamically.
+- TAK-R1 successfully learned HQ and Accra networks dynamically.
+- Cross-site endpoint connectivity was verified using ICMP.
+- Accra-to-HQ connectivity passed.
+- Accra-to-Takoradi connectivity passed.
+- Takoradi-to-HQ connectivity passed.
+- Takoradi-to-Accra connectivity passed.
+- Branch-to-branch traceroute successfully demonstrated the path:
+  ACC-PC1 → ACC-R1 → HQ-R1 → TAK-R1 → TAK-PC1.
+
+### Engineering Observations
+OSPF successfully transformed the previously isolated site networks into a dynamically routed enterprise network. Remote networks appeared in the routing tables with OSPF (`O`) route codes without requiring individual static routes.
+
+The hub-and-spoke WAN topology causes branch-to-branch traffic to traverse Headquarters.
+
+### Milestone Result
+**M6 PASSED – OSPF dynamic routing and enterprise-wide connectivity successfully verified.**
