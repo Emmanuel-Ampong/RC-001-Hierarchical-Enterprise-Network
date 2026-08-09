@@ -101,3 +101,29 @@ M6 completed successfully.
 
 ### Status
 M7 completed successfully.
+
+
+
+
+## M8 – ACL-Based Security Segmentation – 2026-08-09
+
+### Added
+- Extended IPv4 ACLs for management-plane protection.
+- Role-based access policy for enterprise management networks.
+- HQ departmental access-control policies.
+- Accra and Takoradi Operations access controls.
+
+### Security
+- Restricted unauthorized user access to management VLANs.
+- Preserved authorized IT management access.
+- Preserved legitimate business and server connectivity.
+- Applied least-privilege network segmentation principles.
+
+### Verification
+- Performed pre-control baseline testing.
+- Performed positive authorized-access testing.
+- Performed negative unauthorized-access testing.
+- Verified ACL deny and permit hit counters.
+
+### Status
+M8 completed successfully.

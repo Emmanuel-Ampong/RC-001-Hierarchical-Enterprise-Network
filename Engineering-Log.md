@@ -414,3 +414,27 @@ Secure management requires both reachability and protocol restriction. Successfu
 
 ### Milestone Result
 **M7 PASSED – SSHv2 secure-management baseline successfully deployed and server-side security controls verified.**
+
+
+
+## M8 – ACL-Based Security and Network Segmentation
+**Date:** 09 August 2026  
+**Status:** Complete
+
+Implemented extended IPv4 ACLs to enforce role-based access to enterprise management networks.
+
+A pre-control baseline demonstrated that user VLANs could initially reach management interfaces across HQ, Accra, and Takoradi.
+
+ACLs were subsequently deployed close to the traffic source on relevant router subinterfaces.
+
+Security policy:
+- Authorized IT networks retain management access.
+- HR, Finance, Operations, Executive, and branch Operations networks are denied management-plane access.
+- Legitimate non-management traffic remains permitted.
+
+Positive and negative testing confirmed successful policy enforcement.
+
+ACL match counters provided router-side evidence that representative permit and deny rules processed traffic as designed.
+
+M8 Result: PASS.
+
