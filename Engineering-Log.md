@@ -357,3 +357,60 @@ The hub-and-spoke WAN topology causes branch-to-branch traffic to traverse Headq
 
 ### Milestone Result
 **M6 PASSED – OSPF dynamic routing and enterprise-wide connectivity successfully verified.**
+
+
+## M7 – Secure Remote Management with SSH
+
+**Status:** Complete  
+**Date:** 09 August 2026
+
+### Objective
+Secure the enterprise management plane by enabling SSH Version 2 for remote administration and disabling insecure Telnet access.
+
+### Implementation
+- Configured SSH services on all enterprise routers and switches.
+- Configured the domain name `aegis.local`.
+- Generated RSA key pairs for SSH operation.
+- Enforced SSH Version 2.
+- Created a local privileged administrative account.
+- Configured VTY lines to authenticate against the local user database.
+- Restricted VTY access to SSH only.
+- Configured a 10-minute VTY inactivity timeout.
+- Applied the secure-management baseline to:
+  - HQ-R1
+  - HQ-SW1
+  - HQ-SW2
+  - ACC-R1
+  - ACC-SW1
+  - TAK-R1
+  - TAK-SW1
+
+### Verification
+- `show ip ssh` confirmed SSH Version 2 operation.
+- Management interfaces were reachable locally and across sites.
+- Cross-site management traffic successfully traversed the OSPF network.
+- Representative Telnet attempts to HQ-R1, ACC-R1, and TAK-R1 were rejected.
+- VTY configuration was inspected on HQ-R1 and HQ-SW1.
+- `login local` and `transport input ssh` were confirmed.
+
+### Security Validation
+Positive verification:
+- Management IP reachability: PASS
+- SSHv2 service enabled: PASS
+- Local VTY authentication configured: PASS
+
+Negative verification:
+- Telnet access to HQ-R1: BLOCKED – PASS
+- Telnet access to ACC-R1: BLOCKED – PASS
+- Telnet access to TAK-R1: BLOCKED – PASS
+
+### Verification Limitation
+An authenticated interactive SSH session could not be directly validated because the tested Packet Tracer endpoint/switch client implementation did not provide the required SSH client command.
+
+This limitation does not replace the server-side verification and should remain documented rather than being reported as a successful interactive login.
+
+### Engineering Observation
+Secure management requires both reachability and protocol restriction. Successful ICMP reachability to management interfaces demonstrated network availability, while rejected Telnet sessions demonstrated enforcement of the SSH-only VTY policy.
+
+### Milestone Result
+**M7 PASSED – SSHv2 secure-management baseline successfully deployed and server-side security controls verified.**

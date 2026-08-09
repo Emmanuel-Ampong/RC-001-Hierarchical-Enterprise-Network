@@ -76,3 +76,28 @@ All notable changes to RC-001 will be documented in this file.
 
 ### Status
 M6 completed successfully.
+
+
+## M7 – Secure Remote Management – 2026-08-09
+
+### Added
+- SSH Version 2 management across enterprise routers and switches.
+- RSA-based SSH support.
+- Local privileged administrator authentication.
+- VTY session inactivity timeout.
+- SSH-only remote management policy.
+
+### Security
+- Disabled Telnet access through VTY transport restrictions.
+- Restricted remote CLI management to SSH.
+- Verified management reachability across OSPF-routed sites.
+- Confirmed representative Telnet connections were rejected.
+
+### Verification
+- SSHv2 status verified.
+- HQ-R1 and HQ-SW1 VTY configurations inspected.
+- Cross-site management connectivity verified.
+- Interactive SSH client validation documented as a Packet Tracer limitation.
+
+### Status
+M7 completed successfully.
