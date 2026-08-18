@@ -438,3 +438,198 @@ ACL match counters provided router-side evidence that representative permit and 
 
 M8 Result: PASS.
 
+## M9 — Enterprise Infrastructure Services
+
+**Status:** Complete
+**Date:** 17 August 2026
+**Checkpoint:** RC-001-v0.6
+
+### Objective
+
+Extend RC-001 from a secured multi-site routed network into an operational enterprise environment providing centralized infrastructure services across Headquarters, Accra, and Takoradi.
+
+The milestone focused on centralized DHCP, centralized DNS, an internal application service, and regression testing to ensure that the security controls implemented during M8 remained effective.
+
+### Centralized DHCP Implementation
+
+AD-SRV (`10.10.60.10`) was configured as the centralized DHCP server.
+
+DHCP services were provided to intended user VLANs across:
+
+* Headquarters
+* Accra
+* Takoradi
+
+Because DHCP broadcast traffic does not traverse routers by default, DHCP relay was configured on appropriate router subinterfaces using:
+
+```text
+ip helper-address 10.10.60.10
+```
+
+DNS-SRV (`10.10.60.11`) was distributed to DHCP clients as the centralized DNS server.
+
+Server, management, router, and WAN addressing remained static.
+
+### Initial Failure
+
+The first DHCP deployment was tested on HR-PC1.
+
+The client failed to obtain a valid lease and assigned itself an APIPA address from the `169.254.0.0/16` range.
+
+This triggered a structured troubleshooting process.
+
+### Troubleshooting
+
+The following checks were performed:
+
+1. Verified that the HR VLAN router subinterface contained the correct `ip helper-address`.
+2. Verified successful IP connectivity between HQ-R1 and AD-SRV.
+3. Inspected the inbound `HQ-HR-IN` ACL introduced during M8.
+4. Determined that the initial DHCP Discover traffic did not match the existing subnet-based permit entry because the client did not yet possess a valid HR address.
+5. Identified the ACL policy as the cause of the failed DHCP bootstrap process.
+
+### Corrective Action
+
+A narrowly scoped DHCP exception was inserted before the existing ACL security rules:
+
+```text
+permit udp any eq bootpc any eq bootps
+```
+
+The DHCP request was repeated.
+
+HR-PC1 subsequently received:
+
+```text
+IPv4 Address:    10.10.10.20
+Subnet Mask:     255.255.255.224
+Default Gateway: 10.10.10.1
+DNS Server:      10.10.60.11
+```
+
+The same DHCP-relay architecture was then extended to the remaining intended HQ, Accra, and Takoradi user VLANs.
+
+### Multi-Site DHCP Verification
+
+Centralized DHCP was successfully verified across all three sites.
+
+Representative branch clients successfully received addressing from AD-SRV across the OSPF-routed WAN.
+
+Verification included:
+
+* Valid DHCP-assigned IPv4 address
+* Correct subnet mask
+* Correct default gateway
+* Correct centralized DNS server
+* Reachability to local gateway
+* Reachability to AD-SRV
+* Reachability to DNS-SRV
+
+### Security Regression Testing
+
+After introducing DHCP exceptions, the M8 access-control policy was retested.
+
+Results confirmed:
+
+* Unauthorized HR access to management networks remained blocked.
+* Accra Operations access to management networks remained blocked.
+* Takoradi Operations access to management networks remained blocked.
+* Authorized IT users retained management connectivity.
+* Legitimate server and enterprise traffic remained operational.
+
+ACL counters confirmed matches on both:
+
+* DHCP permit entries
+* Existing management-network deny entries
+
+This demonstrated that the DHCP correction preserved the least-privilege management security policy.
+
+### Centralized DNS
+
+DNS-SRV (`10.10.60.11`) was configured as the internal centralized DNS service.
+
+The internal namespace used was:
+
+```text
+aegis.local
+```
+
+A records included:
+
+* `ad.aegis.local` → `10.10.60.10`
+* `dns.aegis.local` → `10.10.60.11`
+* `files.aegis.local` → `10.10.60.12`
+* `intranet.aegis.local` → `10.10.60.13`
+* `backup.aegis.local` → `10.10.60.14`
+
+Name resolution was successfully verified from Headquarters, Accra, and Takoradi.
+
+A nonexistent hostname was also tested and correctly failed to resolve, providing negative DNS verification.
+
+### Internal Application Service
+
+WEB-SRV (`10.10.60.13`) was configured as an internal web service.
+
+The internal DNS record:
+
+```text
+intranet.aegis.local
+```
+
+was mapped to the server.
+
+The default web page was replaced with a customized Project Aegis / RC-001 internal portal.
+
+The portal was successfully accessed by hostname from:
+
+* Headquarters
+* Accra
+* Takoradi
+
+This verified the complete application-service path:
+
+```text
+DHCP
+  ↓
+DNS
+  ↓
+Hostname Resolution
+  ↓
+OSPF Routing
+  ↓
+HQ Server Network
+  ↓
+WEB-SRV
+  ↓
+HTTP Application
+```
+
+### Final Verification
+
+Final acceptance testing confirmed:
+
+* Centralized DHCP operational at all three sites
+* DHCP relay operational across routed boundaries
+* Centralized DNS operational
+* Positive DNS resolution operational
+* Negative DNS resolution behaved as expected
+* Internal HTTP application reachable by hostname
+* OSPF routing remained operational
+* Management-plane ACL restrictions remained effective
+* Authorized IT management access remained available
+
+### Key Engineering Finding
+
+The most significant M9 finding was the interaction between a newly introduced legitimate service and a previously validated security control.
+
+The M8 ACLs were functioning correctly according to their original requirements, but the introduction of DHCP exposed an additional traffic requirement that had not previously existed.
+
+Rather than removing or broadly weakening the ACL, a narrowly scoped exception was implemented and followed by regression testing.
+
+This reinforced an important engineering principle:
+
+> Security controls must evolve with service requirements, but any exception should be narrowly scoped and followed by verification that the original security objective remains intact.
+
+### Milestone Result
+
+**M9 PASSED — centralized DHCP, DNS, and internal application services successfully implemented and verified across the RC-001 enterprise environment while preserving existing routing and security controls.**

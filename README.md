@@ -366,13 +366,36 @@ least-privilege policy.
 Results should distinguish between what was configured, what was
 observed, and what could not be directly tested.
 
+## M9 — Enterprise Infrastructure Services
+
+M9 extended RC-001 from a secured routed infrastructure into a multi-site enterprise environment providing centralized network services.
+
+### Implemented
+
+- Centralized DHCP using `AD-SRV (10.10.60.10)`
+- DHCP relay across routed HQ, Accra, and Takoradi VLANs
+- Centralized DNS using `DNS-SRV (10.10.60.11)`
+- Internal `aegis.local` namespace
+- Internal server name resolution
+- Internal web service at `intranet.aegis.local`
+- Customized Project Aegis / RC-001 intranet portal
+- Multi-site service verification
+- Security regression testing
+
+### Key Engineering Finding
+
+Initial DHCP testing failed because the existing M8 inbound ACL policy did not permit DHCP bootstrap traffic before clients obtained valid subnet addresses.
+
+The failure was isolated through relay, reachability, and ACL verification. A narrowly scoped DHCP exception was introduced, after which DHCP succeeded.
+
+Regression testing confirmed that the change restored DHCP functionality while preserving the M8 management-plane security policy.
+
+**M9 Result: VERIFIED**
+
+| M9 | Enterprise Infrastructure Services | ✅ Complete |
+
 
 ### Next Milestones
-
-#### M9 — Infrastructure Services
-
-The next milestone will introduce supporting enterprise services and
-further operationalize the network.
 
 #### M10 — Final Engineering Validation
 

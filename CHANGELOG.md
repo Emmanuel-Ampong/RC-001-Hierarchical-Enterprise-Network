@@ -103,8 +103,6 @@ M6 completed successfully.
 M7 completed successfully.
 
 
-
-
 ## M8 – ACL-Based Security Segmentation – 2026-08-09
 
 ### Added
@@ -127,3 +125,43 @@ M7 completed successfully.
 
 ### Status
 M8 completed successfully.
+
+## [v0.6] — M9 Enterprise Infrastructure Services — 2026-08-17
+
+### Added
+- Centralized DHCP service hosted on AD-SRV (`10.10.60.10`)
+- DHCP relay across HQ, Accra, and Takoradi user VLANs
+- Centralized DNS service hosted on DNS-SRV (`10.10.60.11`)
+- Internal `aegis.local` DNS namespace
+- Internal DNS A records for core enterprise servers
+- Project Aegis / RC-001 internal web portal
+- Internal application access through `intranet.aegis.local`
+- M9 infrastructure-services verification report
+
+### Changed
+- Migrated intended end-user networks from static addressing to centralized DHCP
+- Distributed `10.10.60.11` as the DNS server through DHCP
+- Updated selected M8 inbound ACLs to permit DHCP bootstrap traffic
+- Preserved static addressing for servers, management infrastructure, router interfaces, and WAN links
+
+### Fixed
+- Resolved DHCP failure caused by interaction between DHCP bootstrap traffic and existing M8 inbound ACL policy
+- Added narrowly scoped UDP BOOTPC-to-BOOTPS exceptions before applicable management-network restrictions
+
+### Verified
+- Centralized DHCP operation across Headquarters, Accra, and Takoradi
+- Cross-WAN DHCP relay through the OSPF-routed network
+- Correct DHCP addressing, subnet masks, gateways, and DNS assignment
+- Centralized DNS resolution across all three sites
+- Expected failure of nonexistent internal DNS names
+- HTTP access to `intranet.aegis.local` from all three sites
+- OSPF routing remained operational
+- Unauthorized user access to management networks remained blocked
+- Authorized IT management access remained permitted
+- ACL counters recorded both DHCP permit and management-deny matches
+
+### Engineering Finding
+The introduction of centralized DHCP exposed an interaction with the previously validated M8 access-control policy. The issue was isolated through relay, reachability, and ACL verification. A narrowly scoped DHCP exception restored service while subsequent regression testing confirmed that the original management-plane security objective remained intact.
+
+### Checkpoint
+- `RC-001-v0.6.pkt`
