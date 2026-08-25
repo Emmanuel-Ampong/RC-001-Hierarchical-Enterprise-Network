@@ -136,7 +136,8 @@ M8 completed successfully.
 - Internal DNS A records for core enterprise servers
 - Project Aegis / RC-001 internal web portal
 - Internal application access through `intranet.aegis.local`
-- M9 infrastructure-services verification report
+
+##  M9 - infrastructure-services verification report
 
 ### Changed
 - Migrated intended end-user networks from static addressing to centralized DHCP

@@ -633,3 +633,72 @@ This reinforced an important engineering principle:
 ### Milestone Result
 
 **M9 PASSED — centralized DHCP, DNS, and internal application services successfully implemented and verified across the RC-001 enterprise environment while preserving existing routing and security controls.**
+
+## M10 — Experimental Validation and Research Evaluation
+
+### Summary
+
+M10 transitioned RC-001 from implementation verification to structured experimental evaluation. Four experiments were conducted to assess routing resilience, VLAN segmentation, secure administration, and architectural scalability.
+
+### Experiments Completed
+
+#### EXP-01 — OSPF Convergence
+A controlled HQ–Accra WAN failure was introduced to observe OSPF behavior.
+
+The experiment demonstrated:
+- OSPF adjacency loss following link failure.
+- Withdrawal of affected routes.
+- Automatic adjacency re-establishment following link restoration.
+- Restoration of dynamically learned routes.
+- Successful end-to-end connectivity after reconvergence.
+
+**Result: PASS**
+
+#### EXP-02 — VLAN Segmentation
+The headquarters VLAN architecture was evaluated to verify logical separation of departmental broadcast domains.
+
+The experiment demonstrated:
+- Operational departmental VLAN gateways.
+- Correct VLAN and trunk configuration.
+- VLAN-specific dynamic MAC-address learning.
+- Successful HR and Finance endpoint-to-gateway connectivity.
+
+**Result: PASS**
+
+#### EXP-03 — Secure Administration
+SSH-based management and management-network access restrictions were evaluated.
+
+The experiment demonstrated:
+- SSH Version 2 operation.
+- Successful authorized administrative access.
+- Failed unauthorized HR-originated management access.
+- ACL match counters corroborating enforcement of the restriction.
+
+**Result: PASS**
+
+#### EXP-04 — Scalability Validation
+A new Research departmental network was introduced without redesigning the existing enterprise architecture.
+
+Implemented expansion:
+- VLAN 70 — RESEARCH
+- Network: 10.10.70.0/27
+- Gateway: 10.10.70.1
+- Endpoint: RESEARCH-PC1
+
+OSPF dynamically propagated the new subnet to the Accra and Takoradi routers. The new endpoint successfully reached local infrastructure and remote enterprise networks.
+
+Regression testing confirmed that the existing internal DNS/web service remained operational after recovery of a missing DNS resource record caused by an unsaved Packet Tracer simulation state.
+
+**Result: PASS**
+
+### Engineering Finding
+
+The M10 experiments provide evidence that RC-001 demonstrates functional routing resilience, logical network segmentation, controlled secure administration, and modular departmental expansion within the limitations of Cisco Packet Tracer.
+
+Twenty screenshots were retained as experimental evidence across EXP-01 through EXP-04.
+
+### M10 Status
+
+**Completed — PASS**
+
+
