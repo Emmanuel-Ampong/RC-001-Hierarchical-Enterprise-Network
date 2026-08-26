@@ -271,5 +271,9 @@ EXP-04 successfully demonstrated that RC-001 can incorporate an additional
 departmental VLAN and subnet while preserving enterprise routing and existing
 service availability.
 
-Overall Result: PASS
+Overall Result: PASS WITH SCOPE LIMITATION
+
+
+
+
 

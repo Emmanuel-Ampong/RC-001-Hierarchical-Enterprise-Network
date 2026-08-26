@@ -395,20 +395,36 @@ Regression testing confirmed that the change restored DHCP functionality while p
 | M9 | Enterprise Infrastructure Services | ✅ Complete |
 
 
-### Next Milestones
 
-#### M10 — Final Engineering Validation
+## M10 — Experimental Validation and Final Engineering Review
 
-The final RC-001 milestone will focus on:
+M10 completed the experimental and final engineering validation phase of RC-001.
 
-End-to-end acceptance testing
-Failure and recovery testing
-Configuration review
-Verification consolidation
-Final architecture documentation
-Lessons learned
-Repository cleanup
-Portfolio release
+The milestone included:
+
+- OSPF failure and recovery testing
+- VLAN segmentation validation
+- Secure-administration testing
+- Scalability testing
+- End-to-end regression testing
+- Requirements traceability
+- Documentation consolidation
+- Lessons learned
+- Future-work definition
+- Repository cleanup
+
+Four structured experiments were completed:
+
+- EXP-01 — OSPF Convergence
+- EXP-02 — VLAN Segmentation
+- EXP-03 — Secure Administration
+- EXP-04 — Scalability Validation
+
+EXP-01 through EXP-03 directly satisfied their experimental objectives.
+
+EXP-04 successfully demonstrated modular departmental expansion, but the original NRS requirement specified addition of a future branch. The experiment is therefore recorded as **PASS WITH SCOPE LIMITATION**, and the associated future-branch requirement remains partially validated.
+
+**M10 Status: COMPLETED**
 
 
 # Project Aegis
