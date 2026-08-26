@@ -24,7 +24,7 @@ increasingly proactive cyber defense.
 
 ## Project Status
 
-**Current Progress: M8 Complete — Security Segmentation Verified**
+**Current Status: RC-001 Complete — Final Engineering and Experimental Validation Completed**
 
 | Milestone | Engineering Focus | Status |
 |---|---|---|
@@ -36,10 +36,11 @@ increasingly proactive cyber defense.
 | M6 | OSPF Dynamic Routing | ✅ Complete |
 | M7 | SSHv2 Management Hardening | ✅ Complete |
 | M8 | ACL-Based Security Segmentation | ✅ Complete |
-| M9 | Infrastructure Services | ⏳ Planned |
-| M10 | Final Validation & Portfolio Release | ⏳ Planned |
+| M9 | Enterprise Infrastructure Services | ✅ Complete |
+| M10 | Experimental Validation & Project Closeout | ✅ Complete |
 
----
+**RC-001 Status: COMPLETE**
+
 
 ## Research / Engineering Question
 
