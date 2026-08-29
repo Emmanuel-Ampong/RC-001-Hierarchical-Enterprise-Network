@@ -12,11 +12,11 @@ multi-project research and engineering portfolio exploring the progression
 from secure network architecture toward observable, measurable, and
 increasingly proactive cyber defense.
 
-## Current RC-001 Topology
+## Final RC-001 Topology
 
 ![RC-001 Enterprise Topology](Images/RC-001-Enterprise-Topology.png)
 
-*Current multi-site RC-001 implementation connecting Headquarters, Accra, and Takoradi.*
+*Final RC-001 multi-site enterprise topology connecting Headquarters, Accra, and Takoradi following M10 experimental validation and scalability testing.*
 
 
 ---
