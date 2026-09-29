@@ -1,6 +1,6 @@
-# RC-001 — Secure Hierarchical Enterprise Network
+# RC-001 - Secure Hierarchical Enterprise Network
 
-> **Foundation Project of Project Aegis**  
+> **Foundation Project of Project Aegis**
 > **Building Toward Proactive Network Defense**
 
 RC-001 is a research-oriented network engineering project focused on the
@@ -24,20 +24,20 @@ increasingly proactive cyber defense.
 
 ## Project Status
 
-**Current Status: RC-001 Complete — Final Engineering and Experimental Validation Completed**
+**Current Status: RC-001 Complete - Final Engineering and Experimental Validation Completed**
 
 | Milestone | Engineering Focus | Status |
 |---|---|---|
-| M1 | Repository & Engineering Foundation | ✅ Complete |
-| M2 | Physical Enterprise Architecture | ✅ Complete |
-| M3 | VLAN Segmentation | ✅ Complete |
-| M4 | IEEE 802.1Q Trunking | ✅ Complete |
-| M5 | Inter-VLAN Routing | ✅ Complete |
-| M6 | OSPF Dynamic Routing | ✅ Complete |
-| M7 | SSHv2 Management Hardening | ✅ Complete |
-| M8 | ACL-Based Security Segmentation | ✅ Complete |
-| M9 | Enterprise Infrastructure Services | ✅ Complete |
-| M10 | Experimental Validation & Project Closeout | ✅ Complete |
+| M1 | Repository & Engineering Foundation | Complete |
+| M2 | Physical Enterprise Architecture | Complete |
+| M3 | VLAN Segmentation | Complete |
+| M4 | IEEE 802.1Q Trunking | Complete |
+| M5 | Inter-VLAN Routing | Complete |
+| M6 | OSPF Dynamic Routing | Complete |
+| M7 | SSHv2 Management Hardening | Complete |
+| M8 | ACL-Based Security Segmentation | Complete |
+| M9 | Enterprise Infrastructure Services | Complete |
+| M10 | Experimental Validation & Project Closeout | Complete |
 
 **RC-001 Status: COMPLETE**
 
@@ -104,7 +104,7 @@ deployment of an additional branch.
 - Provide inter-VLAN routing.
 - Establish dynamic multi-site routing using OSPF.
 - Separate infrastructure management traffic from user traffic.
--  Harden remote network-device administration using SSHv2. 
+- Harden remote network-device administration using SSHv2.
 - Apply least-privilege access controls to the management plane.
 - Preserve legitimate business connectivity while enforcing security policy.
 - Validate network behavior using repeatable positive and negative tests.
@@ -113,7 +113,6 @@ deployment of an additional branch.
 - Document engineering decisions, troubleshooting, limitations, and results.
 
 
-### Technologies and Engineering Methods
 ### Technologies and Engineering Methods
 
 | Technology / Method | Purpose |
@@ -162,7 +161,7 @@ This segmentation provides the logical foundation for policy enforcement,
 traffic isolation, management-plane protection, and controlled security
 validation throughout RC-001.
 
-### Dynamic Routing — OSPF
+### Dynamic Routing - OSPF
 
 OSPF provides dynamic route exchange between Headquarters, Accra, and
 Takoradi.
@@ -200,7 +199,7 @@ recovery behavior within the RC-001 simulated environment.
 A versioned Packet Tracer checkpoint was retained after successful OSPF
 validation.
 
-### Secure Management — SSHv2
+### Secure Management - SSHv2
 
 Infrastructure devices were hardened to support SSH Version 2 for secure
 remote administration.
@@ -308,15 +307,15 @@ After ACL deployment, the tests were repeated.
 
 | Test | Expected | Result |
 |---|---|---|
-| HR → Management | Block | ✅ PASS |
-| Finance → Management | Block | ✅ PASS |
-| HQ Operations → Management | Block | ✅ PASS |
-| Executive → Management | Block | ✅ PASS |
-| Accra Operations → Management | Block | ✅ PASS |
-| Takoradi Operations → Management | Block | ✅ PASS |
-| HQ IT → Management | Allow | ✅ PASS |
-| Accra IT → Management | Allow | ✅ PASS |
-| Takoradi IT → Management | Allow | ✅ PASS |
+| HR -> Management | Block | PASS |
+| Finance -> Management | Block | PASS |
+| HQ Operations -> Management | Block | PASS |
+| Executive -> Management | Block | PASS |
+| Accra Operations -> Management | Block | PASS |
+| Takoradi Operations -> Management | Block | PASS |
+| HQ IT -> Management | Allow | PASS |
+| Accra IT -> Management | Allow | PASS |
+| Takoradi IT -> Management | Allow | PASS |
 
 ACL hit counters provided router-side evidence that representative deny
 and permit ACEs were processing traffic.
@@ -330,31 +329,31 @@ verified.
 RC-001 follows an iterative engineering workflow:
 
 Requirement
-    ↓
+    v
 Design
-    ↓
+    v
 Implementation
-    ↓
+    v
 Baseline
-    ↓
+    v
 Verification
-    ↓
+    v
 Failure / Unexpected Behavior
-    ↓
+    v
 Troubleshooting
-    ↓
+    v
 Re-test
-    ↓
+    v
 Documentation
-    ↓
+    v
 Versioned Checkpoint
-    ↓
+    v
 Controlled Experimental Evaluation
-    ↓
+    v
 Evidence Collection
-    ↓
+    v
 Requirements Traceability
-    ↓
+    v
 Engineering Conclusion
 This approach intentionally distinguishes between:
 
@@ -372,12 +371,12 @@ Testing includes both positive and negative verification.
 
 Examples:
 
-Authorized IT → Management
+Authorized IT -> Management
 Expected: ALLOW
 Observed: ALLOW
 Result: PASS
 
-Unauthorized HR → Management
+Unauthorized HR -> Management
 Expected: DENY
 Observed: DENY
 Result: PASS
@@ -438,11 +437,11 @@ Tracer checkpoints throughout the engineering lifecycle.
 
 Representative checkpoints include:
 
-RC-001-v0.3.pkt  → OSPF multi-site routing
-RC-001-v0.4.pkt  → SSHv2 management hardening
-RC-001-v0.5.pkt  → ACL-based security segmentation
-RC-001-v0.6.pkt  → M9 Enterprise Infrastructure Services
-RC-001-v0.7.pkt  → M10 Experimental Validation and Scalability Testing
+RC-001-v0.3.pkt -> OSPF multi-site routing
+RC-001-v0.4.pkt -> SSHv2 management hardening
+RC-001-v0.5.pkt -> ACL-based security segmentation
+RC-001-v0.6.pkt -> M9 Enterprise Infrastructure Services
+RC-001-v0.7.pkt -> M10 Experimental Validation and Scalability Testing
 
 These checkpoints preserve milestone-level network states, support rollback
 and regression analysis, and provide reproducible evidence of the network's
@@ -455,22 +454,22 @@ routing/service regression testing.
 ### Repository Structure
 
 RC-001-Hierarchical-Enterprise-Network/
-│
-├── Configurations/
-├── Diagrams/
-├── Docs/
-├── Experiments/
-├── Images/
-├── PacketTracer/
-├── Presentation/
-├── References/
-├── results/
-│
-├── .gitignore
-├── CHANGELOG.md
-├── Engineering-Log.md
-├── LICENSE
-└── README.md
+|
++-- Configurations/
++-- Diagrams/
++-- Docs/
++-- Experiments/
++-- Images/
++-- PacketTracer/
++-- Presentation/
++-- References/
++-- results/
+|
++-- .gitignore
++-- CHANGELOG.md
++-- Engineering-Log.md
++-- LICENSE
++-- README.md
 
 
 ### Current Findings
@@ -501,7 +500,7 @@ observed, and what could not be directly tested.
 
 
 
-## M9 — Enterprise Infrastructure Services
+## M9 - Enterprise Infrastructure Services
 
 M9 extended RC-001 from a secured routed infrastructure into a multi-site enterprise environment providing centralized network services.
 
@@ -527,11 +526,11 @@ Regression testing confirmed that the change restored DHCP functionality while p
 
 **M9 Result: VERIFIED**
 
-| M9 | Enterprise Infrastructure Services | ✅ Complete |
+| M9 | Enterprise Infrastructure Services | Complete |
 
 
 
-## M10 — Experimental Validation and Final Engineering Review
+## M10 - Experimental Validation and Final Engineering Review
 
 M10 completed the experimental and final engineering validation phase of RC-001.
 
@@ -550,10 +549,10 @@ The milestone included:
 
 Four structured experiments were completed:
 
-- EXP-01 — OSPF Convergence and WAN Recovery
-- EXP-02 — VLAN Segmentation
-- EXP-03 — Secure Administration
-- EXP-04 — Scalability Validation Through Network Expansion
+- EXP-01 - OSPF Convergence and WAN Recovery
+- EXP-02 - VLAN Segmentation
+- EXP-03 - Secure Administration
+- EXP-04 - Scalability Validation Through Network Expansion
 
 EXP-01 through EXP-03 directly satisfied their experimental objectives.
 
@@ -580,50 +579,35 @@ performance validation.
 
 RC-001 is the infrastructure foundation of Project Aegis.
 
-Project Aegis is a developing multi-project research and engineering portfolio
-exploring the progression from secure network architecture toward observable,
+Project Aegis is a multi-project research and engineering portfolio exploring
+the progression from secure network architecture toward observable,
 measurable, and increasingly proactive cyber defense.
 
-BUILD
-  ↓
-HARDEN
-  ↓
-OBSERVE
-  ↓
-DETECT
-  ↓
-INVESTIGATE
-  ↓
-RESPOND
-  ↓
-ADAPT
+**BUILD -> HARDEN -> OBSERVE -> DETECT -> INVESTIGATE -> RESPOND -> ADAPT**
 
 RC-001 established the BUILD and HARDEN foundation through structured
 enterprise network design, segmentation, dynamic routing, secure management,
 infrastructure services, security policy enforcement, and systematic
 experimental validation.
 
-With RC-001 complete, the next phase of Project Aegis will begin extending
-the environment toward OBSERVE.
+With RC-001 complete, Project Aegis has progressed into the OBSERVE phase
+through RC-002.
 
-## Next Project — RC-002
+## RC-002 - Enterprise Network Security Observability and Telemetry
 
-RC-002 is planned as the next Project Aegis research and engineering project.
+RC-002 extends the validated engineering foundation established in RC-001 into the OBSERVE phase of Project Aegis.
 
-It will build on the validated RC-001 infrastructure and begin exploring
-network observability, telemetry, monitoring, and measurable network behavior.
+It investigates how centralized network telemetry can improve visibility into normal and controlled abnormal behavior within a segmented enterprise network while preserving legitimate network operations.
 
-The exact experimental scope, requirements, architecture, and evaluation
-methodology will be defined during RC-002 requirements development rather
-than assumed in advance.
+The project introduces centralized telemetry collection, packet-level evidence, controlled baseline characterization, and structured experimental comparison as the next stage in the progression from secure network construction toward measurable network behavior.
 
-Future Project Aegis work is expected to progressively investigate areas
-including centralized security monitoring, IDS/IPS, detection engineering,
-behavioral and anomaly analysis, incident investigation, and response
-automation.
+RC-002 is an active research and engineering project. Detailed milestone status, experimental procedures, datasets, evidence, results, and limitations are maintained in the dedicated RC-002 repository:
 
-These are research directions and planned work; they are not presented as
-completed capabilities.
+https://github.com/Emmanuel-Ampong/RC-002-Enterprise-Network-Security-Observability
+
+Findings from RC-002 are interpreted conservatively. Observable behavioral differences are not treated by themselves as evidence of malicious activity or automated threat detection.
+
+Future Project Aegis work is expected to progressively investigate detection, investigation, response, automation, and adaptive defensive mechanisms. These remain research directions rather than completed capabilities.
 
 ## Project Principle
 
